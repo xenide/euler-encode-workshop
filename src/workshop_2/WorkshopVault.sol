@@ -3,11 +3,12 @@
 pragma solidity ^0.8.19;
 
 import "openzeppelin/token/ERC20/extensions/ERC4626.sol";
+import "openzeppelin/utils/ReentrancyGuard.sol";
 import "evc/interfaces/IEthereumVaultConnector.sol";
 import "evc/interfaces/IVault.sol";
 import "./IWorkshopVault.sol";
 
-contract WorkshopVault is ERC4626, IVault, IWorkshopVault {
+contract WorkshopVault is ERC4626, IVault, IWorkshopVault, ReentrancyGuard {
     IEVC internal immutable evc;
 
     constructor(
